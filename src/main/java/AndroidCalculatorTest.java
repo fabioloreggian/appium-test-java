@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AndroidCalculatorTest {
-    private final String DEVICE_NAME = "ce0917199b18d8fd0d";
+    private final String DEVICE_NAME = "ce0917199b18d8fd0d-helloBridgette";
     private AndroidDriver<WebElement> driver;
     private AppiumServer server;
 
