@@ -18,6 +18,7 @@ public class AndroidCalculatorTest {
     public static final String DEVICE_NAME = "DEVICE_NAME";
     public static final String APP_PACKAGE = "APP_PACKAGE";
     public static final String APP_ACTIVITY = "APP_ACTIVITY";
+    public static final String PLATFORM_VERSION = "PLATFORM_VERSION";
     private AndroidDriver<WebElement> driver;
     private AppiumServer server;
 
@@ -45,15 +46,15 @@ public class AndroidCalculatorTest {
         String deviceName = p.getProperty(DEVICE_NAME);
         String appPackage = p.getProperty(APP_PACKAGE);
         String appActivity = p.getProperty(APP_ACTIVITY);
+        String platformVersion = p.getProperty(PLATFORM_VERSION);
 
         server = new AppiumServer();
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
-        desiredCapabilities.setCapability("platformVersion", "9");
+        desiredCapabilities.setCapability("platformVersion", platformVersion);
         desiredCapabilities.setCapability("deviceName", deviceName);
         desiredCapabilities.setCapability("appPackage", appPackage);
         desiredCapabilities.setCapability("appActivity", appActivity);
-        //desiredCapabilities.setCapability("appPackage", "com.google.android.calculator");
         desiredCapabilities.setCapability("automationName", "UiAutomator2");
         desiredCapabilities.setCapability("noReset", true);
         driver = new AndroidDriver<>(server.getServiceUrl(), desiredCapabilities);
@@ -95,5 +96,20 @@ public class AndroidCalculatorTest {
         el4.click();
         MobileElement el5 = (MobileElement) driver.findElementByAccessibilityId("equals");
         el5.click();
+    }
+
+    @Test
+    public void clock() {
+        MobileElement el1 = (MobileElement) driver.findElementByXPath("//xk[@content-desc=\"Alarm\"]/android.widget.TextView");
+        el1.click();
+        MobileElement el2 = (MobileElement) driver.findElementByXPath("(//android.view.ViewGroup[@content-desc=\" Alarm\"])[1]/android.widget.LinearLayout");
+        el2.click();
+        MobileElement el3 = (MobileElement) driver.findElementByAccessibilityId("Monday");
+        el3.click();
+        MobileElement el4 = (MobileElement) driver.findElementByAccessibilityId("Saturday");
+        el4.click();
+        MobileElement el5 = (MobileElement) driver.findElementByXPath("//android.view.ViewGroup[@content-desc=\"8:30 AM Alarm\"]/android.widget.Switch");
+        el5.click();
+
     }
 }
