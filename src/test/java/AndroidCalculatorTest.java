@@ -3,18 +3,19 @@ import io.appium.java_client.android.AndroidDriver;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.net.MalformedURLException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.Scanner;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AndroidCalculatorTest {
-    private final String DEVICE_NAME = "ce0917199b18d8fd0d-helloBridgette";
+    public static final String DEVICE_NAME = "DEVICE_NAME";
     private AndroidDriver<WebElement> driver;
     private AppiumServer server;
 
@@ -36,29 +37,27 @@ public class AndroidCalculatorTest {
     }
 
     @BeforeAll
-    public void setUp() {
-        server = new AppiumServer();
-    }
+    public void setUp() throws IOException {
+        Properties p = new Properties();
+        p.load(ClassLoader.getSystemResourceAsStream("config.properties"));
+        String deviceName = p.getProperty(DEVICE_NAME);
 
-    @BeforeEach
-    public void resetApp() throws MalformedURLException {
+        server = new AppiumServer();
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
         desiredCapabilities.setCapability("platformVersion", "9");
-        desiredCapabilities.setCapability("deviceName", DEVICE_NAME);
+        desiredCapabilities.setCapability("deviceName", deviceName);
         desiredCapabilities.setCapability("appPackage", "com.google.android.calculator");
         desiredCapabilities.setCapability("appActivity", "com.android.calculator2.Calculator");
         desiredCapabilities.setCapability("automationName", "UiAutomator2");
         desiredCapabilities.setCapability("noReset", true);
-
         driver = new AndroidDriver<>(server.getServiceUrl(), desiredCapabilities);
+
     }
 
     @AfterEach()
     public void quitDriver() {
-        if (driver != null) {
-            driver.quit();
-        }
+        driver.resetApp();
     }
 
     @AfterAll
