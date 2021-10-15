@@ -16,6 +16,8 @@ import java.util.Scanner;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AndroidCalculatorTest {
     public static final String DEVICE_NAME = "DEVICE_NAME";
+    public static final String APP_PACKAGE = "APP_PACKAGE";
+    public static final String APP_ACTIVITY = "APP_ACTIVITY";
     private AndroidDriver<WebElement> driver;
     private AppiumServer server;
 
@@ -41,14 +43,16 @@ public class AndroidCalculatorTest {
         Properties p = new Properties();
         p.load(ClassLoader.getSystemResourceAsStream("config.properties"));
         String deviceName = p.getProperty(DEVICE_NAME);
+        String appPackage = p.getProperty(APP_PACKAGE);
+        String appActivity = p.getProperty(APP_ACTIVITY);
 
         server = new AppiumServer();
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
         desiredCapabilities.setCapability("platformVersion", "9");
         desiredCapabilities.setCapability("deviceName", deviceName);
-        desiredCapabilities.setCapability("appPackage", "com.google.android.calculator");
-        desiredCapabilities.setCapability("appActivity", "com.android.calculator2.Calculator");
+        desiredCapabilities.setCapability("appPackage", appPackage);
+        desiredCapabilities.setCapability("appActivity", appActivity);
         desiredCapabilities.setCapability("automationName", "UiAutomator2");
         desiredCapabilities.setCapability("noReset", true);
         driver = new AndroidDriver<>(server.getServiceUrl(), desiredCapabilities);
