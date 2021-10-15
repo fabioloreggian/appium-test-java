@@ -1,0 +1,9 @@
+{
+  "platformName": "Android",
+  "platformVersion": 9,
+  "deviceName": "ce0917199b18d8fd0d",
+  "appPackage": "com.google.android.calculator",
+  "appActivity": "com.android.calculator2.Calculator",
+  "automationName": "UiAutomator2",
+  "noReset": true
+}
