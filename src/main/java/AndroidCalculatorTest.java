@@ -10,11 +10,29 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
+import java.util.Scanner;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AndroidCalculatorTest {
     private AndroidDriver<WebElement> driver;
     private AppiumServer server;
+
+    public static void main(String[] args) {
+        AppiumServer s = new AppiumServer();
+
+        Scanner userInput = new Scanner(System.in);
+        while (true) {
+            System.out.println("Enter 'quit' to close the appium server.");
+            System.out.print("$ ");
+
+            String input = userInput.nextLine();
+
+            if (input.equals("quit")) {
+                s.destroy();
+                return;
+            }
+        }
+    }
 
     @BeforeAll
     public void setUp() {
