@@ -47,7 +47,7 @@ public class AndroidCalculatorTest {
         desiredCapabilities.setCapability("platformName", "Android");
         desiredCapabilities.setCapability("platformVersion", "9");
         desiredCapabilities.setCapability("deviceName", deviceName);
-        desiredCapabilities.setCapability("appPackage", "com.google.android.calculator");
+        //desiredCapabilities.setCapability("appPackage", "com.google.android.calculator");
         desiredCapabilities.setCapability("appActivity", "com.android.calculator2.Calculator");
         desiredCapabilities.setCapability("automationName", "UiAutomator2");
         desiredCapabilities.setCapability("noReset", true);
