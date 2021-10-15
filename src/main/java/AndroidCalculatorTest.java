@@ -14,6 +14,7 @@ import java.util.Scanner;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AndroidCalculatorTest {
+    private final String DEVICE_NAME = "ce0917199b18d8fd0d";
     private AndroidDriver<WebElement> driver;
     private AppiumServer server;
 
@@ -41,11 +42,10 @@ public class AndroidCalculatorTest {
 
     @BeforeEach
     public void resetApp() throws MalformedURLException {
-        String deviceName = "ce0917199b18d8fd0d";
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
         desiredCapabilities.setCapability("platformVersion", "9");
-        desiredCapabilities.setCapability("deviceName", deviceName);
+        desiredCapabilities.setCapability("deviceName", DEVICE_NAME);
         desiredCapabilities.setCapability("appPackage", "com.google.android.calculator");
         desiredCapabilities.setCapability("appActivity", "com.android.calculator2.Calculator");
         desiredCapabilities.setCapability("automationName", "UiAutomator2");
