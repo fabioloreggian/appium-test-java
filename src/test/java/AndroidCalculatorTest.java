@@ -53,6 +53,7 @@ public class AndroidCalculatorTest {
         desiredCapabilities.setCapability("deviceName", deviceName);
         desiredCapabilities.setCapability("appPackage", appPackage);
         desiredCapabilities.setCapability("appActivity", appActivity);
+        //desiredCapabilities.setCapability("appPackage", "com.google.android.calculator");
         desiredCapabilities.setCapability("automationName", "UiAutomator2");
         desiredCapabilities.setCapability("noReset", true);
         driver = new AndroidDriver<>(server.getServiceUrl(), desiredCapabilities);
