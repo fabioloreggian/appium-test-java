@@ -27,23 +27,26 @@ public class AndroidCalendarTest extends AndroidBaseTest {
 // no data is inputted or edited here just a few button clicks
     @Test
     public void Calendar() {
-        MobileElement el1 = (MobileElement) driver.findElementById("com.huawei.calendar:id/day_count_view");
+        MobileElement el1 = (MobileElement) driver.findElementById("com.huawei.calendar:id/extend_toolbar_sub_title");
         el1.click();
-        MobileElement el2 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.HorizontalScrollView/android.widget.LinearLayout/android.widget.TextView[3]");
+        MobileElement el2 = (MobileElement) driver.findElementById("com.huawei.calendar:id/extend_toolbar_title");
         el2.click();
-        MobileElement el3 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.HorizontalScrollView/android.widget.LinearLayout/android.widget.TextView[4]");
+        MobileElement el3 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.HorizontalScrollView/android.widget.LinearLayout/android.widget.TextView[5]");
         el3.click();
-        MobileElement el4 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.HorizontalScrollView/android.widget.LinearLayout/android.widget.TextView[5]");
+        MobileElement el4 = (MobileElement) driver.findElementByXPath("//android.widget.RelativeLayout[@content-desc=\"MONDAY, 01 NOVEMBER  All Saints' Day   \"]/android.widget.RelativeLayout");
         el4.click();
-        MobileElement el5 = (MobileElement) driver.findElementByXPath("//android.widget.RelativeLayout[@content-desc=\"THURSDAY, 16 DECEMBER  Day of Reconciliation   \"]/android.widget.RelativeLayout/android.widget.LinearLayout[2]/android.widget.TextView");
+        MobileElement el5 = (MobileElement) driver.findElementById("com.huawei.calendar:id/reminders_add_label");
         el5.click();
         MobileElement el6 = (MobileElement) driver.findElementById("com.huawei.calendar:id/reminders_add_label");
         el6.click();
-        MobileElement el7 = (MobileElement) driver.findElementByAccessibilityId("Remove reminder");
+        MobileElement el7 = (MobileElement) driver.findElementByXPath("(//android.widget.ImageView[@content-desc=\"Remove reminder\"])[2]");
         el7.click();
-        MobileElement el8 = (MobileElement) driver.findElementByAccessibilityId("‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‏‏‏‏‎‎‎‎‏‏‎‏‎‎‏‎‏‏‏‏‎‏‎‎‎‏‎‎‏‏‏‎‏‏‎‎‏‏‏‎‏‎‏‏‏‎‏‎‎‏‏‎‎‎‎‎‏‏‎‏‎Navigate up‎‏‎‎‏‎");
+        MobileElement el8 = (MobileElement) driver.findElementByAccessibilityId("Remove reminder");
         el8.click();
-        MobileElement el9 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.HorizontalScrollView/android.widget.LinearLayout/android.widget.TextView[2]");
+        MobileElement el9 = (MobileElement) driver.findElementByAccessibilityId("‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‏‏‏‏‎‎‎‎‏‏‎‏‎‎‏‎‏‏‏‏‎‏‎‎‎‏‎‎‏‏‏‎‏‏‎‎‏‏‏‎‏‎‏‏‏‎‏‎‎‏‏‎‎‎‎‎‏‏‎‏‎Navigate up‎‏‎‎‏‎");
         el9.click();
+        MobileElement el10 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.HorizontalScrollView/android.widget.LinearLayout/android.widget.TextView[2]");
+        el10.click();
+
     }
 }
