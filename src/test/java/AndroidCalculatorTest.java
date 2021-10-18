@@ -1,74 +1,30 @@
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.Properties;
-import java.util.Scanner;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class AndroidCalculatorTest {
-    public static final String DEVICE_NAME = "DEVICE_NAME";
-    public static final String APP_PACKAGE = "APP_PACKAGE";
-    public static final String APP_ACTIVITY = "APP_ACTIVITY";
-    public static final String PLATFORM_VERSION = "PLATFORM_VERSION";
-    private AndroidDriver<WebElement> driver;
-    private AppiumServer server;
-
-    public static void main(String[] args) {
-        AppiumServer s = new AppiumServer();
-
-        Scanner userInput = new Scanner(System.in);
-        while (true) {
-            System.out.println("Enter 'quit' to close the appium server.");
-            System.out.print("$ ");
-
-            String input = userInput.nextLine();
-
-            if (input.equals("quit")) {
-                s.destroy();
-                return;
-            }
-        }
-    }
+public class AndroidCalculatorTest extends AndroidBaseTest {
 
     @BeforeAll
-    public void setUp() throws IOException {
-        Properties p = new Properties();
-        p.load(ClassLoader.getSystemResourceAsStream("config.properties"));
-        String deviceName = p.getProperty(DEVICE_NAME);
-        String appPackage = p.getProperty(APP_PACKAGE);
-        String appActivity = p.getProperty(APP_ACTIVITY);
-        String platformVersion = p.getProperty(PLATFORM_VERSION);
-
-        server = new AppiumServer();
-        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setCapability("platformName", "Android");
-        desiredCapabilities.setCapability("platformVersion", platformVersion);
-        desiredCapabilities.setCapability("deviceName", deviceName);
-        desiredCapabilities.setCapability("appPackage", appPackage);
-        desiredCapabilities.setCapability("appActivity", appActivity);
-        desiredCapabilities.setCapability("automationName", "UiAutomator2");
-        desiredCapabilities.setCapability("noReset", true);
-        driver = new AndroidDriver<>(server.getServiceUrl(), desiredCapabilities);
+    public void init() throws IOException {
+        this.properties = "calculator.properties";
+        super.setUp();
 
     }
 
     @AfterEach()
-    public void quitDriver() {
-        driver.resetApp();
+    public void onDestroyEach() {
+        super.quitDriver();
     }
 
     @AfterAll
-    public void destroy() {
-        server.destroy();
+    public void onDestroy() {
+        super.destroy();
     }
 
     @Test
@@ -96,22 +52,5 @@ public class AndroidCalculatorTest {
         el4.click();
         MobileElement el5 = (MobileElement) driver.findElementByAccessibilityId("equals");
         el5.click();
-    }
-
-    @Test
-    public void clock() {
-        MobileElement el1 = (MobileElement) driver.findElementByAccessibilityId("Clock");
-        el1.click();
-        MobileElement el2 = (MobileElement) driver.findElementByAccessibilityId("4 Hours 02 Minutes am, Tuesday, 19 October, Off, Double tap to edit.");
-        el2.click();
-        MobileElement el3 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout");
-        el3.click();
-        MobileElement el4 = (MobileElement) driver.findElementByAccessibilityId("Navigate up");
-        el4.click();
-        MobileElement el5 = (MobileElement) driver.findElementById("com.sec.android.app.clockpackage:id/repeat_6");
-        el5.click();
-        el5.click();
-
-
     }
 }
