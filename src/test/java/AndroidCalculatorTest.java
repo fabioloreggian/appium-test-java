@@ -100,16 +100,18 @@ public class AndroidCalculatorTest {
 
     @Test
     public void clock() {
-        MobileElement el1 = (MobileElement) driver.findElementByXPath("//xk[@content-desc=\"Alarm\"]/android.widget.TextView");
+        MobileElement el1 = (MobileElement) driver.findElementByAccessibilityId("Clock");
         el1.click();
-        MobileElement el2 = (MobileElement) driver.findElementByXPath("(//android.view.ViewGroup[@content-desc=\" Alarm\"])[1]/android.widget.LinearLayout");
+        MobileElement el2 = (MobileElement) driver.findElementByAccessibilityId("4 Hours 02 Minutes am, Tuesday, 19 October, Off, Double tap to edit.");
         el2.click();
-        MobileElement el3 = (MobileElement) driver.findElementByAccessibilityId("Monday");
+        MobileElement el3 = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout");
         el3.click();
-        MobileElement el4 = (MobileElement) driver.findElementByAccessibilityId("Saturday");
+        MobileElement el4 = (MobileElement) driver.findElementByAccessibilityId("Navigate up");
         el4.click();
-        MobileElement el5 = (MobileElement) driver.findElementByXPath("//android.view.ViewGroup[@content-desc=\"8:30 AM Alarm\"]/android.widget.Switch");
+        MobileElement el5 = (MobileElement) driver.findElementById("com.sec.android.app.clockpackage:id/repeat_6");
         el5.click();
+        el5.click();
+
 
     }
 }
